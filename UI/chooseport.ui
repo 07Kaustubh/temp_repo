@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Frame</class>
+ <widget class="QFrame" name="Frame">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>320</width>
+    <height>60</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>320</width>
+    <height>60</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>320</width>
+    <height>118</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>{Port</string>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">*{color : white;
+background-color: #564c4c ;
+border-radius : 10px}
+QComboBox{
+background-color:	#634b3a ;
+color: rgb(255, 255, 255);
+border-radius: 20px;
+height : 100%;
+width : 100%}
+QComboBox::down-arrow {
+width: 0px;    
+height: 0px; 
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QComboBox" name="portComboBox">
+     <property name="minimumSize">
+      <size>
+       <width>300</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>300</width>
+       <height>40</height>
+      </size>
+     </property>
+     <item>
+      <property name="text">
+       <string>Select Port</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4050</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4060</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4070</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

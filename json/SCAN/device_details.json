@@ -1,0 +1,54 @@
+[
+    {
+        "title" : "DEVICE DETAILS",
+        "code" : 4,
+        "body" : [
+            {
+            "input": [
+                    {
+                        "title" : "VIN",
+                        "input_type" : "text",
+                        "disable": false,
+                        "value" : "",
+                        "code": 23
+                    },
+                    {
+                        "title" : "IMEI",
+                        "input_type" : "text",
+                        "value" : "",
+                        "disable": true,
+                        "code": 59
+                    },
+                    {
+                        "title" : "ICCID",
+                        "input_type" : "text",
+                        "value" : "",
+                        "disable": true,
+                        "code": 60
+                    },
+                    {
+                        "title" : "FIRMWARE VERSION",
+                        "input_type" : "text",
+                        "value" : "",
+                        "disable": true,
+                        "code": 61
+                    },
+                    {
+                        "title" : "HARDWARE VERSION",
+                        "input_type" : "text",
+                        "value" : "",
+                        "disable":  true,
+                        "code": 62
+                    },
+                    {
+                        "title" : "CONFIG VERSION",
+                        "input_type" : "text",
+                        "value" : "",
+                        "disable": false,
+                        "code": 63
+                    }
+                ] 
+            }
+        ]
+    }
+]

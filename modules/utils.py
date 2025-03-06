@@ -1,0 +1,5 @@
+SCAN_DIR ="json/SCAN"
+LOGO_DIR ="LOGO"
+BODY = "body"
+HEADER = "$ZEN"
+TCP_HOST = "ec2-34-238-148-224.compute-1.amazonaws.com"

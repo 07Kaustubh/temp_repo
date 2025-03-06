@@ -1,0 +1,30 @@
+[
+    {
+        "title": "GPRS Setting",
+        "code":6,
+        "body": [
+            {
+                "input": [
+                    {
+                        "title": "APN",
+                        "input_type": "text",
+                        "value": "",
+                        "code":22
+                    },
+                    {
+                        "title": "APN Username",
+                        "input_type": "text",
+                        "value": "",
+                        "code":16
+                    },
+                    {
+                        "title": "APN Password",
+                        "input_type": "text",
+                        "value": "",
+                        "code":17
+                    }
+                ]
+            }
+        ]
+    }
+]

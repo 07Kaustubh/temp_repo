@@ -1,0 +1,24 @@
+[
+    {
+        "title" : "TCP",
+        "code" : 7,
+        "body" : [
+            {
+               "input":[
+                    {
+                        "title" : "IP1",
+                        "input_type" : "text",
+                        "value" : "",
+                        "code" : 1
+                    },
+                    {
+                        "title" : "PORT1",
+                        "input_type" : "text",
+                        "value" : "",
+                        "code" : 2
+                    }
+                ] 
+            }
+        ]
+    }
+]
