@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1253</width>
+    <height>618</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Select a Device</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">
+* {
+    background-color: #743d3d;
+    font-size: 16px;
+    color: white;
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+}
+
+/* Labels */
+QLabel {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Main Frame */
+QFrame {
+    background-color: #5a2f2f;
+    border-radius: 12px;
+    padding: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Buttons */
+QPushButton {
+    background-color: #926e55;
+    color: white;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid transparent;
+}
+
+QPushButton:hover {
+    background-color: #7a5a42;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #634b3a;
+}
+
+/* Next Button */
+QPushButton#nextButton {
+    background-color: #d88c5c;
+    font-size: 18px;
+    padding: 14px;
+    border-radius: 14px;
+    font-weight: bold;
+}
+
+QPushButton#nextButton:hover {
+    background-color: #bf764c;
+}
+
+/* Tool Buttons */
+QToolButton {
+    border: none;
+    background: transparent;
+    padding: 10px;
+}
+
+QToolButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+}
+
+/* Device Grid Buttons */
+QPushButton#device1, QPushButton#device2, QPushButton#device3, QPushButton#device4 {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-radius: 15px;
+    padding: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+QPushButton#device1:hover, QPushButton#device2:hover, QPushButton#device3:hover, QPushButton#device4:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Title */
+QLabel#titleLabel {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* Logo */
+QLabel#logoLabel {
+    margin-bottom: 10px;
+}
+
+/* Device Grid Frame */
+QFrame#deviceGridFrame {
+    padding: 20px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+    </string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QFrame" name="logoFrame">
+      <layout class="QHBoxLayout" name="logoLayout">
+       <item>
+        <widget class="QLabel" name="logoLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>200</height>
+          </size>
+         </property>
+         <property name="pixmap">
+          <pixmap>../LOGO/zentrack-high-resolution-logo-transparent.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="titleLabel">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI,Arial,sans-serif</family>
+           <pointsize>1</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Select Your Device</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="deviceGridFrame">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <property name="horizontalSpacing">
+        <number>10</number>
+       </property>
+       <property name="verticalSpacing">
+        <number>5</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="device1">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>128</width>
+           <height>128</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>128</width>
+           <height>128</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../LOGO/icon.png</normaloff>../LOGO/icon.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>128</width>
+           <height>128</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="device2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>128</width>
+           <height>128</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>128</width>
+           <height>128</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../LOGO/icon.png</normaloff>../LOGO/icon.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>128</width>
+           <height>128</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="device3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>128</width>
+           <height>128</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>128</width>
+           <height>128</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../LOGO/icon.png</normaloff>../LOGO/icon.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>128</width>
+           <height>128</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="device4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>128</width>
+           <height>128</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>128</width>
+           <height>128</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../LOGO/icon.png</normaloff>../LOGO/icon.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>128</width>
+           <height>128</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="nextButton">
+      <property name="text">
+       <string>Next</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
