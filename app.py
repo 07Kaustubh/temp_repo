@@ -10,9 +10,54 @@ from modules.grpcard import *
 from modules.serialRead import *
 from modules.tcp import *
 
-class windw(QtWidgets.QMainWindow):
+class MainApp(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
+        self.selected_device = None  # Ensure this is defined before usage
+        self.device_buttons = {}
+        self.initUI()
+    
+    def initUI(self):
+        # Load the device selection screen first
+        uic.loadUi("./UI/deviceselection.ui", self)
+        self.setWindowTitle("Select a Device")
+        
+        self.device_buttons = {
+            "Device A": self.findChild(QPushButton, "device1"),
+            "Device B": self.findChild(QPushButton, "device2"),
+            "Device C": self.findChild(QPushButton, "device3"),
+            "Device D": self.findChild(QPushButton, "device4"),
+        }
+        
+        for name, btn in self.device_buttons.items():
+            if btn:
+                btn.clicked.connect(lambda _, n=name: self.select_device(n))
+
+        self.next_button = self.findChild(QPushButton, "nextButton")
+        self.next_button.clicked.connect(self.load_homepage)
+
+        self.show()
+
+
+    def select_device(self, device_name):
+        self.selected_device = device_name
+        QMessageBox.information(self, "Device Selected", f"You selected: {device_name}")
+
+        # Reset styles
+        for btn in self.device_buttons.values():
+            if btn:
+                btn.setStyleSheet("background-color: #926e55; color: white; border-radius: 10px;")
+        
+        # Highlight selected button
+        if self.device_buttons.get(device_name):
+            self.device_buttons[device_name].setStyleSheet("background-color: #634b3a; color: white; border-radius: 10px;")
+
+    
+    def load_homepage(self):
+        if not self.selected_device:
+            QMessageBox.warning(self, "No Device Selected", "Please select a device before proceeding.", QMessageBox.Ok)
+            return
+
         uic.loadUi("./UI/homepage.ui", self)
         self.setWindowTitle("ZENTRACK")
         self.setWindowIcon(QIcon(f"{LOGO_DIR}/zentrack-favicon-black.png"))
@@ -41,6 +86,7 @@ class windw(QtWidgets.QMainWindow):
                 layout.addWidget(btn)
                 layout.layout().setAlignment(Qt.AlignTop)
                 btn.clicked.connect(lambda checked , d = item:self.shwda(d))
+        QMessageBox.information(self, "Device Loaded", f"Welcome! You selected {self.selected_device}.")
         self.__getPortDialoge()
     def get_device_data(self):
         self.saved_data.clear()  
@@ -269,7 +315,8 @@ class TCPthread(QThread,TCP):
             self.dataReceived.emit(data)
         except Exception as e:
             print("Error in conversion ",e)
+            
 app = QtWidgets.QApplication(sys.argv)
-window = windw()
+window = MainApp()
 window.showMaximized()
 sys.exit(app.exec_())
