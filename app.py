@@ -1,8 +1,9 @@
 import sys
 import json
 import socket
-from PyQt5 import QtWidgets, uic
-from PyQt5.QtGui import QIcon
+import requests
+from PyQt5 import QtWidgets, uic, QtCore
+from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import Qt ,QThread , pyqtSignal
 from PyQt5.QtWidgets import QPushButton, QFileDialog, QVBoxLayout, QMessageBox, QFrame , QLabel ,QWidget, QGroupBox , QGridLayout , QStackedWidget , QInputDialog 
 from modules.utils import *
@@ -15,6 +16,7 @@ class MainApp(QtWidgets.QMainWindow):
         super().__init__()
         self.selected_device = None  # Ensure this is defined before usage
         self.device_buttons = {}
+        self.selected_company = None
         self.initUI()
     
     def initUI(self):
@@ -34,7 +36,7 @@ class MainApp(QtWidgets.QMainWindow):
                 btn.clicked.connect(lambda _, n=name: self.select_device(n))
 
         self.next_button = self.findChild(QPushButton, "nextButton")
-        self.next_button.clicked.connect(self.load_homepage)
+        self.next_button.clicked.connect(self.load_choose_mode)
 
         self.show()
 
@@ -52,12 +54,83 @@ class MainApp(QtWidgets.QMainWindow):
         if self.device_buttons.get(device_name):
             self.device_buttons[device_name].setStyleSheet("background-color: #634b3a; color: white; border-radius: 10px;")
 
+    def load_choose_mode(self):
+        dialog = QtWidgets.QDialog(self)
+        uic.loadUi("./UI/choosemode.ui", dialog)
+        self.setWindowTitle("Select Mode")
+
+        config_button = self.findChild(QPushButton, "configButton")
+        test_button = self.findChild(QPushButton, "testButton")
+
+        config_button.clicked.connect(lambda: self.load_company_selection() or dialog.accept())
+        test_button.clicked.connect(lambda: self.load_test_screen() or dialog.accept())
+
+        dialog.exec_() 
+
+    def load_company_selection(self):
+        uic.loadUi("./UI/companyselection.ui", self)
+        self.setWindowTitle("Select Company")
+
+        # Fetch companies from DB (Placeholder for now)
+        scroll_area = self.findChild(QtWidgets.QScrollArea, "scrollArea")
+        scroll_area_widget = scroll_area.findChild(QtWidgets.QWidget, "scrollAreaWidgetContents")
+        company_layout = scroll_area_widget.findChild(QtWidgets.QVBoxLayout, "companyLayout")
+
+        while company_layout.count():
+            child = company_layout.takeAt(0)
+            if child.widget():
+                child.widget().deleteLater()
+
+        # Fetch company data from the JSON server
+        try:
+            response = requests.get("http://127.0.0.1:61272/api/companies")
+            response.raise_for_status()  # Raises an error for bad responses (4xx, 5xx)
+            companies = response.json()
+        except Exception as e:
+            QMessageBox.critical(self, "Error", f"Failed to fetch companies: {e}")
+            return
+
+        self.company_buttons = {}
+
+    # Dynamically add buttons for each company
+        for company in companies:
+            company_name = company["companyname"]
+            company_logo = company["image"]
+
+            # Create a button for the company
+            button = QPushButton(company_name)
+            button.setStyleSheet("background-color: #926e55; color: white; border-radius: 10px; padding: 10px;")
+            button.setMinimumHeight(60)
+
+            # Load the company logo (if valid)
+            pixmap = QPixmap()
+            if pixmap.loadFromData(requests.get(company_logo).content):
+                button.setIcon(QIcon(pixmap))
+                button.setIconSize(QtCore.QSize(50, 50))
+
+            # Store button reference
+            self.company_buttons[company_name] = button
+            button.clicked.connect(lambda _, n=company_name: self.load_homepage(n))
+
+            # Add button to layout
+            company_layout.addWidget(button)
+
+            self.show()
+
+    def load_test_screen(self):
+        uic.loadUi("./UI/testscreen.ui", self)
+        self.setWindowTitle("Test Mode")
+        QMessageBox.information(self, "Test Mode", "Entering Test Mode.")
+        self.show()
+
+
     
-    def load_homepage(self):
+    def load_homepage(self, company_name):
         if not self.selected_device:
             QMessageBox.warning(self, "No Device Selected", "Please select a device before proceeding.", QMessageBox.Ok)
             return
-
+        
+        self.selected_company = company_name
         uic.loadUi("./UI/homepage.ui", self)
         self.setWindowTitle("ZENTRACK")
         self.setWindowIcon(QIcon(f"{LOGO_DIR}/zentrack-favicon-black.png"))
