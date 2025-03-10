@@ -1,0 +1,36 @@
+[
+    {
+        "title" : "GPS",
+        "code" : 69,
+        "body" : [
+            {
+               "input":[
+                    {
+                        "title" : "PHOD",
+                        "input_type" : "text",
+                        "disable": true,
+                        "value" : ""
+                    },
+                    {
+                        "title": "LAT",
+                        "input_type" : "text",
+                        "disable": true,
+                        "value" : ""
+                    },
+                    {
+                        "title": "LONG",
+                        "input_type" : "text",
+                        "disable": true,
+                        "value" : ""
+                    },
+                    {
+                        "title": "FIX OR NOT A",
+                        "input_type" : "text",
+                        "disable": true,
+                        "value" : ""
+                    }
+                ] 
+            }
+        ]
+    }
+]
