@@ -121,7 +121,26 @@ class MainApp(QtWidgets.QMainWindow):
         uic.loadUi("./UI/testscreen.ui", self)
         self.setWindowTitle("Test Mode")
         QMessageBox.information(self, "Test Mode", "Entering Test Mode.")
+        self.setAutoFillBackground(True)
+        self.testbtn = self.findChild(QPushButton , 'testbtn')
+        self.testbtn.clicked.connect(self.test)
+        self.frame = self.findChild(QFrame , 'navlyout')
+        self.container = self.findChild(QWidget, 'page1')
+        layout = QVBoxLayout(self.frame)
+        self.frame.setLayout(layout)
+
+        with open (f'{SCAN_DIR}/test', 'r' ) as file:
+            jsndta = json.load(file)
+        if jsndta :
+            for item in jsndta['navbtn']:
+                btn = QPushButton(item['name'])
+                layout.addWidget(btn)
+                layout.layout().setAlignment(Qt.AlignTop)
+                btn.clicked.connect(lambda checked , d = item:self.shwda(d))
         self.show()
+    def test(self): 
+        print
+
 
 
     
