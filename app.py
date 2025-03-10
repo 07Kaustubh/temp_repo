@@ -122,21 +122,54 @@ class MainApp(QtWidgets.QMainWindow):
         self.setWindowTitle("Test Mode")
         QMessageBox.information(self, "Test Mode", "Entering Test Mode.")
         self.setAutoFillBackground(True)
-        self.testbtn = self.findChild(QPushButton , 'testbtn')
+        
+        self.testbtn = self.findChild(QPushButton, 'testbtn')
         self.testbtn.clicked.connect(self.test)
-        self.frame = self.findChild(QFrame , 'navlyout')
-        self.container = self.findChild(QWidget, 'page1')
-        layout = QVBoxLayout(self.frame)
-        self.frame.setLayout(layout)
+        self.status_frame = self.findChild(QFrame, 'frame_7') 
 
-        with open (f'{SCAN_DIR}/test', 'r' ) as file:
+        if self.status_frame.layout():
+            # Clear the old layout
+            while self.status_frame.layout().count():
+                item = self.status_frame.layout().takeAt(0)
+                if item.widget():
+                    item.widget().deleteLater()
+            # Delete the old layout
+            QWidget().setLayout(self.status_frame.layout())
+        
+        main_layout = QVBoxLayout(self.status_frame)
+        
+        self.test_buttons = {}
+        self.status_labels = {}
+
+        with open (f'{SCAN_DIR}/test/main.json', 'r' ) as file:
             jsndta = json.load(file)
         if jsndta :
-            for item in jsndta['navbtn']:
+            for item in jsndta["navbtn"]:
+
+                row_layout = QHBoxLayout()
+
                 btn = QPushButton(item['name'])
-                layout.addWidget(btn)
-                layout.layout().setAlignment(Qt.AlignTop)
-                btn.clicked.connect(lambda checked , d = item:self.shwda(d))
+                btn.setStyleSheet("background-color: #926e55; color: white; border-radius: 10px; padding: 10px;")
+                btn.setFixedHeight(40)
+                btn.setFixedWidth(200)
+                
+                status_label = QLabel("Status:")
+                status_label.setStyleSheet("background-color: white; border:1px solid black;")
+                status_label.setFixedWidth(300)
+                status_label.setAlignment(Qt.AlignCenter)
+
+                self.test_buttons[item['name']] = btn
+                self.status_labels[item['name']] = status_label
+                
+                row_layout.addWidget(btn)
+                row_layout.addWidget(status_label)
+
+                row_layout.addStretch()
+                main_layout.addLayout(row_layout)
+
+                btn.clicked.connect(lambda checked, d=item["name"]: self.show_test(d))
+            main_layout.addStretch()
+                
         self.show()
     def test(self): 
         print
