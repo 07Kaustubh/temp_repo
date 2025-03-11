@@ -1,0 +1,18 @@
+[
+    {
+        "title" : "EBV_IBV_AIN",
+        "code" : 67,
+        "body" : [
+            {
+                "input":[
+                    {
+                        "title" : "BOTH VALUE",
+                        "input_type" : "text",
+                        "disable": true,
+                        "value" : ""
+                    }
+                ]
+            }
+        ]
+    }
+]
