@@ -1,0 +1,18 @@
+[
+    {
+        "title" : "DOUT2-D2IN",
+        "code" : 42,
+        "body" : [
+            {
+                "input":[
+                    {
+                        "title" : "STATUS",
+                        "input_type" : "text",
+                        "disable": true,
+                        "value" : ""
+                    }
+                ]
+            }
+        ]
+    }
+]
