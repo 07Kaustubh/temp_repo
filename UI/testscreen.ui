@@ -95,7 +95,7 @@ background-color: #634b3a
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>../ZENTRACK_Debug_Tool/LOGO/zentrack-high-resolution-logo-transparent.png</pixmap>
+          <pixmap>../LOGO/zentrack-high-resolution-logo-transparent.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -350,7 +350,7 @@ background-color: #634b3a
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>../ZENTRACK_Debug_Tool/LOGO/zentrack-favicon-white.png</pixmap>
+          <pixmap>../LOGO/zentrack-favicon-white.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -364,7 +364,7 @@ background-color: #634b3a
   </widget>
  </widget>
  <resources>
-  <include location="../ZENTRACK_Debug_Tool/UI/RES.qrc"/>
+  <include location="RES.qrc"/>
  </resources>
  <connections/>
 </ui>
