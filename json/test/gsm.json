@@ -1,0 +1,36 @@
+[
+    {
+        "title" : "GSM",
+        "code" : 72,
+        "body" : [
+            {
+                "input":[
+                    {
+                        "title" : "SIM NETWORK",
+                        "input_type" : "text",
+                        "disable": true,
+                        "value" : ""
+                    },
+                    {
+                        "title" : "EC200 AT RESPONSE",
+                        "input_type" : "text",
+                        "disable": true,
+                        "value" : ""
+                    },
+                    {
+                        "title" : "NETWORK TYPE (4G, LTE)",
+                        "input_type" : "text",
+                        "disable": true,
+                        "value" : ""
+                    },
+                    {
+                        "title" : "OPERATOR",
+                        "input_type" : "text",
+                        "disable": true,
+                        "value" : ""
+                    }
+                ]
+            }
+        ]
+    }
+]
