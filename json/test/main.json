@@ -1,0 +1,230 @@
+{
+    "Title": [
+        {
+            "name": "IMU",
+            "code" : 71,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "ACCEL X",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        },
+                        {
+                            "title" : "ACCEL Y",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        },
+                        {
+                            "title" : "ACCEL Z",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        },
+                        {
+                            "title" : "GYRO X",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        },
+                        {
+                            "title" : "GYRO Y",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        },
+                        {
+                            "title" : "GYRO Z",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "DOUT-D1IN",
+            "code": 41,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "STATUS",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "DOUT-D2IN",
+            "code": 42,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "STATUS",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "GPS",
+            "code": 69,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "PHOD",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        },
+                        {
+                            "title" : "LAT",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        },
+                        {
+                            "title" : "LONG",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        },
+                        {
+                            "title" : "FIX OR NOT A",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "GSM",
+            "code": 72,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "SIM NETWORK",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        },
+                        {
+                            "title" : "EC200 AT RESPONSE",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        },
+                        {
+                            "title" : "NETWORK TYPE (4G, LTE)",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        },
+                        {
+                            "title" : "OPERATOR",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "memory",
+            "code": 73,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "MEMORY WHO AM I",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "IGN",
+            "code": 39,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "IGN PIN STATE",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "EBV IBV AIN",
+            "code": 67,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "BOTH VALUE",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "CAN TX RX",
+            "code": 44,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "RX",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "SIM",
+            "code": 70,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "CPIN",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
