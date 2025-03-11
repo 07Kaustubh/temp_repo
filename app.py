@@ -126,192 +126,152 @@ class MainApp(QtWidgets.QMainWindow):
         self.setWindowTitle("Test Mode")
         QMessageBox.information(self, "Test Mode", "Entering Test Mode.")
         self.setAutoFillBackground(True)
-        
+
         self.testbtn = self.findChild(QPushButton, 'testbtn')
         self.testbtn.clicked.connect(self.test)
-        self.status_frame = self.findChild(QFrame, 'frame_7') 
+        self.status_frame = self.findChild(QFrame, 'frame_7')
 
+        # Clear old layout if it exists
         if self.status_frame.layout():
-            # Clear the old layout
             while self.status_frame.layout().count():
                 item = self.status_frame.layout().takeAt(0)
                 if item.widget():
                     item.widget().deleteLater()
-            # Delete the old layout
             QWidget().setLayout(self.status_frame.layout())
-        
+
+        # Scroll area setup
         scroll_area = QScrollArea()
         scroll_area.setWidgetResizable(True)
         scroll_area.setStyleSheet("background-color: #743d3d; border: none;")
-        
-        # Create a container widget for the scroll area
-        scroll_content = QWidget()
 
+        scroll_content = QWidget()
         main_layout = QVBoxLayout(scroll_content)
         main_layout.setSpacing(10)
-        
-        # self.test_buttons = {}
-        # self.status_labels = {}
 
-        # with open (f'{SCAN_DIR}/test/main.json', 'r' ) as file:
-        #     jsndta = json.load(file)
-        # if jsndta :
-        #     for item in jsndta["navbtn"]:
+        # UI Element Storage
+        self.test_buttons = {}      # Main test buttons
+        self.status_labels = {}     # Main status labels
+        self.detail_frames = {}     # Frames to hold detailed subfields
+        self.detail_widgets = {}    # Dictionary of dictionaries for subfield widgets
+        self.toggle_buttons = {}    # Expand/collapse buttons
 
-        #         row_layout = QHBoxLayout()
-
-        #         btn = QPushButton(item['name'])
-        #         btn.setStyleSheet("background-color: #926e55; color: white; border-radius: 10px; padding: 10px;")
-        #         btn.setFixedHeight(40)
-        #         btn.setFixedWidth(200)
-                
-        #         status_label = QLabel("Status:")
-        #         status_label.setStyleSheet("background-color: white; border:1px solid black;")
-        #         status_label.setFixedWidth(300)
-        #         status_label.setAlignment(Qt.AlignCenter)
-
-        #         self.test_buttons[item['name']] = btn
-        #         self.status_labels[item['name']] = status_label
-                
-        #         row_layout.addWidget(btn)
-        #         row_layout.addWidget(status_label)
-
-        #         row_layout.addStretch()
-        #         main_layout.addLayout(row_layout)
-
-        #     main_layout.addStretch()
-                
-        # self.show()
-
-        # Dictionaries to store UI elements
-        self.test_buttons = {}     # Main test buttons
-        self.status_labels = {}    # Main status labels
-        self.detail_frames = {}    # Frames to hold detailed subfields
-        self.detail_widgets = {}   # Dictionary of dictionaries for subfield widgets
-        self.toggle_buttons = {}   # Buttons to expand/collapse detail views
-        
-        # Load the main test configuration
-        with open (f'{SCAN_DIR}/test/main.json', 'r' ) as file:
+        # Load updated JSON structure
+        with open(f'{SCAN_DIR}/test/main.json', 'r') as file:
             jsndta = json.load(file)
-            
+
         if jsndta:
-            for item in jsndta["navbtn"]:
-                test_name = item['name']
-                file_path = item['filepath'].replace('json\\SCAN\\', '')
-                
-                # Create main row for this test
+            for test in jsndta["Title"]:
+                test_name = test["name"]
+                test_code = test["code"]
+                test_body = test.get("body", [])
+
+                # Create test row
                 row_frame = QFrame()
                 row_layout = QHBoxLayout(row_frame)
                 row_layout.setContentsMargins(0, 0, 0, 0)
-                
-                # Test button
+
+                # Test Button
                 btn = QPushButton(test_name)
                 btn.setStyleSheet("background-color: #926e55; color: white; border-radius: 10px; padding: 10px;")
                 btn.setFixedHeight(40)
                 btn.setFixedWidth(200)
-                
-                # Main status label
+
+                # Status Label
                 status_label = QLabel("Status:")
                 status_label.setStyleSheet("background-color: white; border:1px solid black;")
                 status_label.setFixedWidth(300)
                 status_label.setAlignment(Qt.AlignCenter)
-                
-                # Toggle button for details
+
+                # Toggle Button
                 toggle_btn = QPushButton("▼")
                 toggle_btn.setFixedWidth(40)
                 toggle_btn.setFixedHeight(40)
                 toggle_btn.setStyleSheet("background-color: #634b3a; color: white; border-radius: 5px;")
-                
-                # Store references to widgets
+
+                # Store references
                 self.test_buttons[test_name] = btn
                 self.status_labels[test_name] = status_label
                 self.toggle_buttons[test_name] = toggle_btn
-                
+
                 # Add widgets to row
                 row_layout.addWidget(btn)
                 row_layout.addWidget(status_label)
                 row_layout.addWidget(toggle_btn)
                 row_layout.addStretch()
-                
-                # Create and hide the detail frame
+
+                # Create subfield frame (Initially Hidden)
                 detail_frame = QFrame()
                 detail_frame.setFrameShape(QFrame.StyledPanel)
                 detail_frame.setFrameShadow(QFrame.Sunken)
                 detail_frame.setStyleSheet("background-color: #8a6b54; border-radius: 5px; margin-left: 20px;")
                 detail_layout = QVBoxLayout(detail_frame)
-                
-                # Load subfields from the corresponding JSON file
-                try:
-                    self.detail_widgets[test_name] = {}
-                    json_path = f'{SCAN_DIR}/{file_path}'
-                    
-                    # For development fallback - adjust path if file not found
-                    if not os.path.exists(json_path):
-                        json_path = os.path.join('json/test', os.path.basename(file_path))
-                    
-                    if os.path.exists(json_path):
-                        with open(json_path, 'r') as subfile:
-                            subdata = json.load(subfile)
-                            if isinstance(subdata, list) and len(subdata) > 0:
-                                # Get input fields from the first body item
-                                if 'body' in subdata[0] and len(subdata[0]['body']) > 0:
-                                    if 'input' in subdata[0]['body'][0]:
-                                        for field in subdata[0]['body'][0]['input']:
-                                            field_title = field['title']
-                                            
-                                            # Create subfield row
-                                            subfield_layout = QHBoxLayout()
-                                            
-                                            # Field title label
-                                            title_label = QLabel(field_title + ":")
-                                            title_label.setStyleSheet("color: white; background-color: transparent;")
-                                            title_label.setFixedWidth(200)
-                                            
-                                            # Field value label
-                                            value_label = QLabel("Not tested")
-                                            value_label.setStyleSheet("background-color: white; border: 1px solid black;")
-                                            value_label.setFixedWidth(300)
-                                            value_label.setAlignment(Qt.AlignCenter)
-                                            
-                                            # Store reference to the value label
-                                            self.detail_widgets[test_name][field_title] = value_label
-                                            
-                                            # Add to subfield layout
-                                            subfield_layout.addWidget(title_label)
-                                            subfield_layout.addWidget(value_label)
-                                            subfield_layout.addStretch()
-                                            
-                                            # Add to detail frame
-                                            detail_layout.addLayout(subfield_layout)
-                except Exception as e:
-                    print(f"Error loading subfields for {test_name}: {e}")
-                
+
+                # Load subfields from `body → key_pair`
+                self.detail_widgets[test_name] = {}
+
+                for body_section in test_body:
+                    key_pairs = body_section.get("key_pair", [])
+
+                    for field in key_pairs:
+                        field_title = field["title"]
+                        is_disabled = field.get("disable", False)
+                        field_value = field.get("value", "")
+
+                        # Create subfield row
+                        subfield_layout = QHBoxLayout()
+
+                        # Field Title Label
+                        title_label = QLabel(f"{field_title}:")
+                        title_label.setStyleSheet("color: white; background-color: transparent;")
+                        title_label.setFixedWidth(200)
+
+                        # Field Value Label
+                        value_label = QLabel(field_value if field_value else "Not tested")
+                        value_label.setStyleSheet("background-color: white; border: 1px solid black;")
+                        value_label.setFixedWidth(300)
+                        value_label.setAlignment(Qt.AlignCenter)
+
+                        if is_disabled:
+                            value_label.setEnabled(False)
+
+                        # Store reference to the field
+                        self.detail_widgets[test_name][field_title] = value_label
+
+                        # Add to subfield layout
+                        subfield_layout.addWidget(title_label)
+                        subfield_layout.addWidget(value_label)
+                        subfield_layout.addStretch()
+
+                        # Add to detail frame
+                        detail_layout.addLayout(subfield_layout)
+
                 # Hide detail frame initially
                 detail_frame.setVisible(False)
                 self.detail_frames[test_name] = detail_frame
-                
+
                 # Connect toggle button
                 toggle_btn.clicked.connect(lambda checked, name=test_name: self.toggle_details(name))
-                
-                # Connect test button (only for visual testing) ** test will be by testbtn only
+
+                # Connect test button
                 btn.clicked.connect(lambda checked, name=test_name: self.run_test(name))
-                
+
                 # Add to main layout
                 main_layout.addWidget(row_frame)
                 main_layout.addWidget(detail_frame)
-            
+
             main_layout.addStretch()
 
             scroll_area.setWidget(scroll_content)
-            
+
             # Create a main layout for the status frame
             status_layout = QVBoxLayout(self.status_frame)
             status_layout.setContentsMargins(0, 0, 0, 0)
-            
+
             # Add the scroll area to the status frame
             status_layout.addWidget(scroll_area)
-                
+
         self.show()
+
 
     def toggle_details(self, test_name):
         """Toggle visibility of the detail frame for a test"""
