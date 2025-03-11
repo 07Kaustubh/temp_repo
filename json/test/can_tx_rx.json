@@ -1,0 +1,18 @@
+[
+    {
+        "title" : "CAN_TX_RX",
+        "code" : 44,
+        "body" : [
+            {
+                "input":[
+                    {
+                        "title" : "RX",
+                        "input_type" : "text",
+                        "disable": true,
+                        "value" : ""
+                    }
+                ]
+            }
+        ]
+    }
+]
