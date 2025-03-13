@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>450</width>
+    <height>350</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>CAN Wakeup Config</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="minimumSize">
+      <size>
+       <width>400</width>
+       <height>320</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">*{color : white;
+background-color: #564c4c ;
+border-radius : 10px}
+QComboBox{
+background-color:	#634b3a ;
+color: rgb(255, 255, 255);
+border-radius: 20px;
+width : 100%}
+QPushButton{
+background-color:	#926e55 ;
+color: rgb(255, 255, 255);
+width : 100%}
+QComboBox::down-arrow {
+width: 0px;    
+height: 0px; 
+}
+QLineEdit{
+min-height : 30px;
+background-color : 	#634b3a;
+color : white;
+padding: 2px;
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+
+      <!-- Wakeup State Dropdown -->
+      <item>
+       <widget class="QComboBox" name="wakeupState">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>T</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>F</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+
+      <!-- Config ID Type Dropdown -->
+      <item>
+       <widget class="QComboBox" name="configIdType">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>Extended ID</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Standard ID</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+
+      <!-- Config Filter Type Dropdown -->
+      <item>
+       <widget class="QComboBox" name="configFilterType">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>Range</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Dual</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Mask</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+
+      <!-- Config Filter 1 -->
+      <item>
+       <widget class="QLineEdit" name="configFilter1">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="placeholderText">
+         <string>Config Filter 1</string>
+        </property>
+       </widget>
+      </item>
+
+      <!-- Config Filter 2 -->
+      <item>
+       <widget class="QLineEdit" name="configFilter2">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="placeholderText">
+         <string>Config Filter 2</string>
+        </property>
+       </widget>
+      </item>
+
+      <!-- Extended ID Count -->
+      <item>
+       <widget class="QLineEdit" name="extendedIdCount">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="placeholderText">
+         <string>Extended ID Count</string>
+        </property>
+       </widget>
+      </item>
+
+      <!-- Standard ID Count -->
+      <item>
+       <widget class="QLineEdit" name="standardIdCount">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="placeholderText">
+         <string>Standard ID Count</string>
+        </property>
+       </widget>
+      </item>
+
+      <!-- Save Button -->
+      <item>
+       <widget class="QPushButton" name="saveButton">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>34</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Save</string>
+        </property>
+       </widget>
+      </item>
+
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
