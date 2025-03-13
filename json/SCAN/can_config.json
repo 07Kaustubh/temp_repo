@@ -76,6 +76,12 @@
                         "input_type" : "can_tx",
                         "value" : "",
                         "code": 56
+                    },
+                    {
+                        "title": "CAN_WAKEUP_CONFIG",
+                        "input_type": "can_wakeup",
+                        "value": "",
+                        "code": 57
                     }
                 ]
             }
