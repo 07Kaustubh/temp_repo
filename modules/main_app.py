@@ -23,7 +23,7 @@ class MainApp(QtWidgets.QMainWindow):
 
     def initUI(self):
         """Starts with the device selection screen."""
-        self.setCentralWidget(self.device_selection)
+        self.setCentralWidget(self.test_screen)
         self.device_selection.selection_complete.connect(self.load_choose_mode)
 
     def load_company_selection(self):

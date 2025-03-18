@@ -200,9 +200,10 @@ class HomeScreen(QMainWindow):
             QMessageBox.warning(self, "No IMEIs Found", "No IMEI numbers received from the server.")
         return
     def data_parsing(self,data):
-        print(data)
+        # print(data)
         if data[0]!="$ZEN":
             return
+        print(data)
         for x in data[2:-1]:
             try:
                 key = str(x).split(chr(0xD5))

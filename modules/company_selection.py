@@ -13,7 +13,7 @@ class CompanySelectionScreen(QMainWindow):
         uic.loadUi("./UI/companyselection.ui", self)  # Load UI separately
         self.setWindowTitle("Select Company")
 
-        self.api_url = "http://127.0.0.1:62716/api/companies"  # API to fetch company data
+        self.api_url = "http://127.0.0.1:50136/api/companies"  # API to fetch company data
         self.company_buttons = {}
         self.initUI()
 

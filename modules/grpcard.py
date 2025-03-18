@@ -77,6 +77,31 @@ class NewcantxWindow(QDialog):
         print(input_text.text())
         input_text.setText(result_string)
         self.close()
+
+class NewCanWakeupWindow(QDialog):
+    def __init__(self, input_text):
+        super().__init__()
+        uic.loadUi("./UI/canwakeup.ui", self)
+        self.setWindowTitle("CAN Wakeup Config")
+        self.config_id_type_mapping = {"Extended ID": 2, "Standard ID": 1}
+        self.config_filter_type_mapping = {"Range": 1, "Dual": 2, "Mask": 3}
+        self.saveButton.clicked.connect(lambda:self.collect_data(input_text))
+
+    def collect_data(self, input_text):
+        wakeup_state = self.wakeupState.currentText()
+        config_id_type = self.configIdType.currentText()
+        config_id_type_mapped = self.config_id_type_mapping.get(config_id_type, "Unknown")
+        config_filter_type = self.configFilterType.currentText()
+        config_filter_type_mapped = self.config_filter_type_mapping.get(config_filter_type, "Unknown")
+        config_filter_1 = self.configFilter1.text()
+        config_filter_2 = self.configFilter2.text()
+        extended_id_count = self.extendedIdCount.text()
+        standard_id_count = self.standardIdCount.text()
+        result_string = (f"{wakeup_state}{chr(0xD9)}{config_id_type_mapped}{chr(0xD9)}{config_filter_type_mapped}{chr(0xD9)}{config_filter_1}{chr(0xD9)}{config_filter_2}{chr(0xD9)}{extended_id_count}{chr(0xD9)}{standard_id_count}")
+        print(result_string)
+        print(input_text.text())
+        input_text.setText(result_string)
+        self.close()
         
 class Grpcard(QFrame):
     def open_new_window(self,input_text):
@@ -90,6 +115,9 @@ class Grpcard(QFrame):
     def open_newcan_txwindow(self,input_text):
         self.new_window = NewcantxWindow(input_text)
         print(input_text.text())
+        self.new_window.exec_()
+    def open_can_wakeup_window(self, input_text):
+        self.new_window = NewCanWakeupWindow(input_text)
         self.new_window.exec_()
     def __init__(self,data):
         super().__init__()
@@ -146,6 +174,10 @@ class Grpcard(QFrame):
                     current_input_box = input_box  # Capture the current instance
                     input_box.clicked.connect(lambda current_input_box=current_input_box: self.open_newcan_txwindow(current_input_box))
                 input_box.setPlaceholderText(input_data['value'])
+                if input_data.get("input_type") == 'can_wakeup':
+                    input_box = ClickInput()
+                    current_input_box = input_box  # Capture the current instance
+                    input_box.clicked.connect(lambda box=current_input_box: self.open_can_wakeup_window(box))
                 if input_data.get("disable"):
                     input_box.setDisabled(True)
                 self.fields[code]=input_box

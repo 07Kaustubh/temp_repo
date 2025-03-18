@@ -33,7 +33,7 @@ class SerialRead:
     def __readResponse(self):
        while self.__started:
             data = self.__ser.read_until(b'\r\n')
-            print("Data Received From Serial:",data)
+            # print("Data Received From Serial:",data)
             # Decode the data and print it
             #self.__callback(data.decode('utf-8', errors='ignore'))
             self.__callback(data.decode('latin-1', errors='ignore'))

@@ -70,12 +70,16 @@ class TestScreen(QMainWindow):
             with open(TEST_JSON_PATH, 'r') as file:
                 jsndta = json.load(file)
 
+            self.__get_parameters = ""
+
             if jsndta:
-                for test in jsndta["Title"]:
+                self.main_code = jsndta["code"]
+                print(self.main_code)
+                for test in jsndta["body"]:
                     test_name = test["name"]
                     test_code = test["code"]
                     test_body = test.get("body", [])
-
+                    self.__get_parameters+=f"{chr(self.main_code)}{chr(test_code)}{chr(0xD7)}"
                     # Create test row
                     row_frame = QFrame()
                     row_layout = QHBoxLayout(row_frame)
@@ -125,7 +129,6 @@ class TestScreen(QMainWindow):
 
                         for field in key_pairs:
                             field_title = field["title"]
-                            is_disabled = field.get("disable", False)
                             field_value = field.get("value", "")
 
                             # Create subfield row
@@ -141,9 +144,6 @@ class TestScreen(QMainWindow):
                             value_label.setStyleSheet("background-color: white; border: 1px solid black;")
                             value_label.setFixedWidth(300)
                             value_label.setAlignment(Qt.AlignCenter)
-
-                            if is_disabled:
-                                value_label.setEnabled(False)
 
                             # Store reference to the field
                             self.detail_widgets[test_name][field_title] = value_label
@@ -181,7 +181,7 @@ class TestScreen(QMainWindow):
                 # Add the scroll area to the status frame
                 status_layout.addWidget(self.scroll_area)
 
-
+            print("Generated __get_parameters:", self.__get_parameters)
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Failed to load tests from JSON: {e}")
 
@@ -215,9 +215,7 @@ class TestScreen(QMainWindow):
             # and update the status based on the result
             
             # Simulate a test running
-            QtWidgets.QApplication.processEvents()
-            import time
-            time.sleep(0.5)  # Simulate test time
+            QtWidgets.QApplication.processEvents()  # Simulate test time
             
             # Update to success (in real code, check the actual result)
             status_label.setText("PASS")
@@ -296,9 +294,10 @@ class TestScreen(QMainWindow):
             self.data_parsing(data.split(chr(0xD7)))
 
     def data_parsing(self,data):
-        print(data)
+        # print(data)
         if data[0]!="$ZEN":
             return
+        print(data)
         for x in data[2:-1]:
             try:
                 key = str(x).split(chr(0xD5))
