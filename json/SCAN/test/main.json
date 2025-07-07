@@ -1,0 +1,305 @@
+{
+    "TITLE": "Test Mode",
+    "CODE": 170,
+    "BODY": [
+        {
+            "NAME": "SIM",
+            "CODE": 142,
+            "KEY_PAIR": [
+                {
+                    "TITLE": "SIM STATUS",
+                    "VALIDATION": {
+                        "type": "enum",
+                        "values": ["1"]
+                    }
+                }
+            ]
+        },
+        {
+            "NAME": "IMU",
+            "CODE": 140,
+            "KEY_PAIR": [
+                {
+                    "TITLE": "ACCELc X",
+                    "INPUT_TYPE": "text",
+                    "DEFAULT_VALUE": 0,
+                    "VALIDATION": {
+                        "type": "range",
+                        "min": -2,
+                        "max": 2,
+                        "unit": "g"
+                    }
+                },
+                {
+                    "TITLE": "ACCEL Y",
+                    "INPUT_TYPE": "text",
+                    "VALIDATION": {
+                        "type": "range",
+                        "min": -2,
+                        "max": 2,
+                        "unit": "g"
+                    }
+                },
+                {
+                    "TITLE": "ACCEL Z",
+                    "INPUT_TYPE": "text",
+                    "VALIDATION": {
+                        "type": "range",
+                        "min": -10,
+                        "max": 10,
+                        "unit": "g"
+                    }
+                },
+                {
+                    "TITLE": "Groy X",
+                    "INPUT_TYPE": "text",
+                    "VALIDATION": {
+                        "type": "range",
+                        "min": -2,
+                        "max": 2,
+                        "unit": "g"
+                    }
+                },
+                {
+                    "TITLE": "Groy Y",
+                    "INPUT_TYPE": "text",
+                    "VALIDATION": {
+                        "type": "range",
+                        "min": -2,
+                        "max": 2,
+                        "unit": "g"
+                    }
+                },
+                {
+                    "TITLE": "Groy Z",
+                    "INPUT_TYPE": "text",
+                    "VALIDATION": {
+                        "type": "range",
+                        "min": -2,
+                        "max": 2,
+                        "unit": "g"
+                    }
+                }
+            ]
+        },
+        {
+            "NAME": "GPS",
+            "CODE": 138,
+            "KEY_PAIR": [
+                {
+                    "TITLE": "GPS FIXED",
+                    "VALIDATION": {
+                        "type": "enum",
+                        "values": [ 1]
+                    }
+                },
+                {
+                    "TITLE": "LATITUDE",
+                    "VALIDATION": {
+                        "type": "range",
+                        "min": -999,
+                        "max": 999,
+                        "unit": "g"
+                    }
+                },
+                {
+                    "TITLE": "LONGITUDE",
+                    "VALIDATION": {
+                        "type": "range",
+                        "min": -999,
+                        "max": 999,
+                        "unit": "g"
+                    }
+                },
+                {
+                    "TITLE": "HEADING",
+                    "VALIDATION": {
+                        "type": "range",
+                        "min": -999,
+                        "max": 999,
+                        "unit": "g"
+                    }
+                },
+                {
+                    "TITLE": "SPEED",
+                    "VALIDATION": {
+                        "type": "range",
+                        "min": -2,
+                        "max": 2,
+                        "unit": "g"
+                    }
+                },
+                {
+                    "TITLE": "ALTITUDE",
+                    "INPUT_TYPE": "text",
+                    "VALIDATION": {
+                        "type": "range",
+                        "min": -999,
+                        "max": 999,
+                        "unit": "g"
+                    }
+                },
+                {
+                    "TITLE": "HDOP",
+                    "VALIDATION": {
+                        "type": "range",
+                        "min": 0,
+                        "max": 3,
+                        "unit": "g"
+                    }
+                },
+                {
+                    "TITLE": "PDOP",
+                    "INPUT_TYPE": "text",
+                    "VALIDATION": {
+                        "type": "range",
+                        "min": 0,
+                        "max": 1,
+                        "unit": "g"
+                    }
+                }
+            ]
+        },
+        {
+            "NAME": "GSM",
+            "CODE": 141,
+            "KEY_PAIR": [
+                {
+                    "TITLE": "OPERATOR NAME",
+                    "INPUT_TYPE": "text",
+                    "DEFAULT_VALUE": 0,
+                    "VALIDATION": {
+                        "type": "enum",
+                        "values": ["IND airtel", "airtel"]
+                    }
+                },
+                {
+                    "TITLE": "Signal Strength",
+                    "INPUT_TYPE": "text",
+                    "VALIDATION": {
+                        "type": "range",
+                        "min": 10,
+                        "max": 35
+                    }
+                }
+            ]
+        },
+        {
+            "NAME": "IVB EBV",
+            "CODE": 143,
+            "KEY_PAIR": [
+                {
+                    "TITLE": "INPUT VOLTAGE",
+                    "INPUT_TYPE": "text",
+                    "DEFAULT_VALUE": 0,
+                    "VALIDATION": {
+                        "type": "range",
+                        "min": 7,
+                        "max": 84,
+                        "unit": "V"
+                    }
+                },
+                {
+                    "TITLE": "BATTERY VOLTAGE",
+                    "INPUT_TYPE": "text",
+                    "DEFAULT_VALUE": 0,
+                    "VALIDATION": {
+                        "type": "range",
+                        "min": 3.2,
+                        "max": 4.3,
+                        "unit": "V"
+                    }
+                }
+            ]
+        },
+        {
+            "NAME": "DIN1",
+            "CODE": 145,
+            "KEY_PAIR": [
+                {
+                    "TITLE": "GET DIN1",
+                    "INPUT_TYPE": "text",
+                    "DEFAULT_VALUE": 0,
+                    "VALIDATION": {
+                        "type": "enum",
+                        "values": [
+                            1
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "NAME": "DIN2",
+            "CODE": 146,
+            "KEY_PAIR": [
+                {
+                    "TITLE": "GET DIN2",
+                    "INPUT_TYPE": "text",
+                    "DEFAULT_VALUE": 0,
+                    "VALIDATION": {
+                        "type": "enum",
+                        "values": [
+                            1
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "NAME": "MEMORY",
+            "CODE": 148,
+            "KEY_PAIR": [
+                {
+                    "TITLE": "MEMORY",
+                    "INPUT_TYPE": "text",
+                    "DEFAULT_VALUE": "hex value",
+                    "VALIDATION": {
+                        "type": "enum",
+                        "values":["2C24"]
+                        
+                    }
+                }
+            ]
+        },
+        {
+            "NAME": "IGNITION",
+            "CODE": 122,
+            "KEY_PAIR": [
+                {
+                    "TITLE": "IGNITION STATUS",
+                    "VALIDATION": {
+                        "type": "enum",
+                        "values": [0,1]
+                    }
+                }
+            ]
+        },
+        {
+            "NAME": "CAN TX",
+            "CODE": 149,
+            "KEY_PAIR": [
+                {
+                    "TITLE": "CAN TX DATA",
+                    "VALIDATION": {
+                        "type": "enum",
+                        "values": [1]
+                    }
+                }
+            ]
+        },
+        {
+            "NAME": "CAN_RX",
+            "CODE": 144,
+            "KEY_PAIR": [
+                {
+                    "TITLE": "CAN RX DATA",
+                    "VALIDATION": {
+                        "type": "enum",
+                        "values": [1]
+                    }
+                }
+            ]
+        }
+    ]
+}

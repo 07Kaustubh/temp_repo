@@ -1,0 +1,66 @@
+[
+    {
+        "title" : "Device_Config",
+        "code" : 3,
+        "body":[
+            {
+                "input": [
+                    {
+                        "title": "ConfigMode",
+                        "input_type": "text",
+                        "value": "",
+                        "code": 42
+                    },
+                    {
+                        "title" : "ION",
+                        "input_type" : "text",
+                        "value" : "",
+                        "code": 10
+                    },
+                    {
+                        "title" : "NSAM",
+                        "input_type" : "text",
+                        "value" : "",
+                        "code": 11
+                    },
+                    {
+                        "title" : "HA",
+                        "input_type" : "text",
+                        "value" : "",
+                        "code": 12
+                    },
+                    {
+                        "title" : "HB",
+                        "input_type" : "text",
+                        "value" : "",
+                        "code": 13
+                    },
+                    {
+                        "title" : "HC",
+                        "input_type" : "text",
+                        "value" : "",
+                        "code": 14
+                    },
+                    {
+                        "title" : "ACCOFFSET",
+                        "input_type" : "text",
+                        "value" : "",
+                        "code": 15
+                    },
+                    {
+                        "title" : "Wakeup Timer",
+                        "input_type" : "text",
+                        "value" : "",
+                        "code": 41
+                    },
+                    {
+                        "title" : "Sleep Value",
+                        "input_type" : "text",
+                        "value" : "",
+                        "code": 42
+                    }
+                ]
+            }
+        ]
+    }
+]

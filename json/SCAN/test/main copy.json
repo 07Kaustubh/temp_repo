@@ -1,0 +1,232 @@
+{
+    "Title": "Test Mode",
+    "code": 170, 
+    "body": [
+        {
+            "name": "IMU",
+            "code" : 58,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "ACCEL X",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "range", "min": -2, "max": 2, "unit": "g" }
+                        },
+                        {
+                            "title" : "ACCEL Y",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "range", "min": -2, "max": 2, "unit": "g" }
+                        },
+                        {
+                            "title" : "ACCEL Z",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "range", "min": -2, "max": 2, "unit": "g" }
+                        },
+                        {
+                            "title" : "GYRO X",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "range", "min": -250, "max": 250, "unit": "dps" }
+                        },
+                        {
+                            "title" : "GYRO Y",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "range", "min": -250, "max": 250, "unit": "dps" }
+                        },
+                        {
+                            "title" : "GYRO Z",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "range", "min": -250, "max": 250, "unit": "dps" }
+                        }
+                    ]
+                }
+                    ]
+        },
+        {
+            "name": "DOUT-D1IN",
+            "code": 41,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "STATUS",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "enum", "values": [0, 1] }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "DOUT-D2IN",
+            "code": 42,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "STATUS",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "enum", "values": [0, 1] }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "GPS",
+            "code": 69,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "PHOD",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "range", "min": 0, "max": 360 }
+                        },
+                        {
+                            "title" : "LAT",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "range", "min": -90, "max": 90 }
+                        },
+                        {
+                            "title" : "LONG",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "range", "min": -180, "max": 180 }
+                        },
+                        {
+                            "title" : "FIX OR NOT A",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "enum", "values": [0, 1] }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "GSM",
+            "code": 72,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "SIM NETWORK",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "string", "pattern": ".*" }
+                        },
+                        {
+                            "title" : "EC200 AT RESPONSE",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "enum", "values": ["OK", "ERROR"] }
+                        },
+                        {
+                            "title" : "NETWORK TYPE (4G, LTE)",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "enum", "values": ["2G", "3G", "4G", "LTE"] }
+                        },
+                        {
+                            "title" : "OPERATOR",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "string", "pattern": ".*" }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "memory",
+            "code": 73,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "MEMORY WHO AM I",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "hex", "length": 2 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "IGN",
+            "code": 39,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "IGN PIN STATE",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "enum", "values": [0, 1] }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "EBV IBV AIN",
+            "code": 67,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "BOTH VALUE",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" :{ "type": "range", "min": 0, "max": 5, "unit": "V" }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "CAN TX RX",
+            "code": 44,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "RX",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "string", "pattern": ".*" }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "SIM",
+            "code": 70,
+            "body" : [
+                {
+                    "key_pair":[
+                        {
+                            "title" : "CPIN",
+                            "input_type" : "text",
+                            "disable": true,
+                            "value" : { "type": "enum", "values": ["READY", "NOT READY"] }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,80 @@
+{
+    "TITLE": "Test Mode",
+    "CODE": 170, 
+    "BODY": [
+        {
+            "NAME": "IMU",
+            "CODE" : 140,
+            "KEY_PAIR" :[
+                        {
+                            "TITLE" : "ACCEL X",
+                            "INPUT_TYPE" : "text",
+                            "DEFAULT_VALUE" :0,
+                            "VALIDATION" : { "type": "range", "min": -2, "max": 2, "unit": "g"}
+                        },
+                        {
+                            "TITLE" : "ACCEL Y",
+                            "INPUT_TYPE" : "text",
+                            "VALIDATION" : { "type": "range", "min": -2, "max": 2, "unit": "g"}
+                        },
+                        {
+                            "TITLE" : "ACCEL Z",
+                            "INPUT_TYPE" : "text",
+                            "VALIDATION" : { "type": "range", "min": -2, "max": 2, "unit": "g"}
+                        },
+                        {
+                            "TITLE" : "Groy X",
+                            "INPUT_TYPE" : "text",
+                            "VALIDATION" : { "type": "range", "min": -2, "max": 2, "unit": "g"}
+                        },
+                        {
+                            "TITLE" : "Groy Y",
+                            "INPUT_TYPE" : "text",
+                            "VALIDATION" : { "type": "range", "min": -2, "max": 2, "unit": "g"}
+                        },
+                        {
+                            "TITLE" : "Groy Z",
+                            "INPUT_TYPE" : "text",
+                            "VALIDATION" : { "type": "range", "min": -2, "max": 2, "unit": "g"}
+                        }
+                         ]
+        },
+        {
+            "NAME": "GPS",
+            "CODE" : 141,
+            "KEY_PAIR" :[
+                        {
+                            "TITLE" : "ACCEL X",
+                            "INPUT_TYPE" : "text",
+                            "DEFAULT_VALUE" :0,
+                            "VALIDATION" : { "type": "range", "min": -2, "max": 2, "unit": "g"}
+                        },
+                        {
+                            "TITLE" : "ACCEL Y",
+                            "INPUT_TYPE" : "text",
+                            "VALIDATION" : { "type": "range", "min": -2, "max": 2, "unit": "g"}
+                        },
+                        {
+                            "TITLE" : "ACCEL Z",
+                            "INPUT_TYPE" : "text",
+                            "VALIDATION" : { "type": "range", "min": -2, "max": 2, "unit": "g"}
+                        },
+                        {
+                            "TITLE" : "Groy X",
+                            "INPUT_TYPE" : "text",
+                            "VALIDATION" : { "type": "range", "min": -2, "max": 2, "unit": "g"}
+                        },
+                        {
+                            "TITLE" : "Groy Y",
+                            "INPUT_TYPE" : "text",
+                            "VALIDATION" : { "type": "range", "min": -2, "max": 2, "unit": "g"}
+                        },
+                        {
+                            "TITLE" : "Groy Z",
+                            "INPUT_TYPE" : "text",
+                            "VALIDATION" : { "type": "range", "min": -2, "max": 2, "unit": "g"}
+                        }
+                         ]
+        }
+    ]
+}
